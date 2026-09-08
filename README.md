@@ -1,3 +1,9 @@
+# Estudiante
+
+lazheart
+
+---
+
 # CoreNumeric
 
 Librería numérica genérica para C++20, construida sobre concepts, variadic templates y fold expressions. Provee un conjunto de algoritmos numéricos (suma, promedio, varianza, máximo, transform-reduce) con restricciones de tipo verificadas en tiempo de compilación.
@@ -29,7 +35,7 @@ La librería es *header-only* y está organizada en tres capas:
 │   (core_numeric::*)          │  transform_reduce, *_variadic
 ├─────────────────────────────┤
 │   Concepts                   │  Addable, Divisible, Iterable,
-│   (restricciones de tipo)    │  + concept propio
+│   (restricciones de tipo)    │  Comparable, Subtractable, Multiplicable
 ├─────────────────────────────┤
 │   Soporte de compilación     │  if constexpr, variadic
 │                               │  templates, fold expressions
@@ -43,6 +49,9 @@ La librería es *header-only* y está organizada en tres capas:
 | `Addable` | Tipos que soportan `+` | `sum`, variadic, `transform_reduce` |
 | `Divisible` | Tipos que soportan `/` por un entero | `mean` |
 | `Iterable` | Tipos recorribles (`begin`/`end`) | contenedores en general |
+| `Comparable` | Tipos que soportan `<` | `max`, `max_variadic` |
+| `Subtractable` | Tipos que soportan `-` | `variance`, `variance_variadic` |
+| `Multiplicable` | Tipos que soportan `*` | `variance`, `variance_variadic` |
 
 Sobre estos concepts se construyen los algoritmos de mayor nivel: `mean` reutiliza `sum`, y `variance` reutiliza `mean`, cada uno añadiendo solo la restricción adicional que necesita.
 
@@ -58,6 +67,7 @@ Todo el código vive dentro del namespace `core_numeric`.
 CoreNumeric/
 ├── src/
 │   └── core_numeric.cpp   # Concepts + algoritmos
+├── main.cpp                # Demostración del sistema y clases de usuario
 ├── test.cpp                # Casos de uso válidos e inválidos
 ├── Makefile
 └── README.md
@@ -71,8 +81,21 @@ CoreNumeric/
 
 - Compilador con soporte para C++20 (GCC 10+, Clang 12+, MSVC 19.29+)
 
-## Compilación
+## Compilación y Ejecución
+
+### Opción 1: Ejecución local con Make
 
 ```bash
-make run
+make run    # Compila y ejecuta main.cpp
+make test   # Compila y ejecuta la suite de pruebas test.cpp
+```
+
+### Opción 2: Ejecución con Docker
+
+```bash
+# Construir la imagen Docker
+docker build -t core_numeric .
+
+# Ejecutar el contenedor (ejecuta demostración main y suite de pruebas)
+docker run --rm core_numeric
 ```

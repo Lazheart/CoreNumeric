@@ -1,0 +1,7 @@
+.git
+.vscode
+.clangd
+compile_commands.json
+programa
+test_prog
+test_fail
