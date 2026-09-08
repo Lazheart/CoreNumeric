@@ -56,8 +56,8 @@ Todo el código vive dentro del namespace `core_numeric`.
 
 ```
 CoreNumeric/
-├── include/
-│   └── core_numeric.hpp   # Concepts + algoritmos
+├── src/
+│   └── core_numeric.cpp   # Concepts + algoritmos
 ├── test.cpp                # Casos de uso válidos e inválidos
 ├── Makefile
 └── README.md
