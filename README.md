@@ -1,6 +1,7 @@
 # Estudiante
 
-lazheart
+lazheart - Benjamín Llerena
+luv-amori133 - Alejandro Martínez
 
 ---
 
